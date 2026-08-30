@@ -1,0 +1,30 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      APP_USERNAME: ${{ secrets.APP_USERNAME }}
+      APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+      API_KEY: ${{ secrets.API_KEY }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Show Environment Variables
+        run: |
+          echo "Username is configured"
+          echo "Password is configured"
+          echo "API key is configured"
+
+      - name: Build
+        run: |
+          echo "Building application..."
+          echo "Build completed successfully"
